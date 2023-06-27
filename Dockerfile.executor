@@ -1,0 +1,40 @@
+FROM golang:latest
+
+WORKDIR /app/executor
+
+# Copy executor files
+COPY executor/go go
+COPY executor/config.yaml config.yaml
+
+WORKDIR /app/shared
+
+# Copy shared files
+COPY shared/abi abi
+COPY shared/keystore keystore
+COPY shared/go go
+
+# Copy local modules
+COPY shared/go/contracts/aggregationSpotter /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/aggregationSpotter
+COPY shared/go/contracts/balanceManager /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/balanceManager
+COPY shared/go/contracts/balanceSpotter /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/balanceSpotter
+COPY shared/go/contracts/entangleDex /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/entangleDex
+COPY shared/go/contracts/masterSynthChef /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/masterSynthChef
+COPY shared/go/contracts/stateSpotter /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/stateSpotter
+COPY shared/go/contracts/synthFactory /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/synthFactory
+COPY shared/go/contracts/testBridge /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/contracts/testBridge
+
+COPY shared/go/cfg /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/cfg
+COPY shared/go/eventBase /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/eventBase
+COPY shared/go/logger /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/logger
+COPY shared/go/proccessing /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/proccessing
+COPY shared/go/transactor /go/src/github.com/Entangle-Protocol/off-chain-apps/shared/transactor
+
+WORKDIR /app/executor/go
+
+COPY ./executor/go/handlers /go/src/github.com/github.com/Entangle-Protocol/executor/handlers 
+
+# Build app
+RUN go build -o main .
+
+# Run app
+ENTRYPOINT ["./main"]

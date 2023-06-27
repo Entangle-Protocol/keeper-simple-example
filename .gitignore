@@ -1,0 +1,7 @@
+logs/
+__debug_bin
+*.pem
+.env_executor
+.env_keeper
+.vscode
+.gitlab-ci.yml

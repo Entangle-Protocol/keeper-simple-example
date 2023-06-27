@@ -1,0 +1,70 @@
+ContractTemplates:
+  AggregationTemplate: &AggregationTemplate
+    name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+  ETHUsdtTemplate:
+    name: "USDT"
+    abi: "../../shared/abi/erc20.abi"
+TargetTemplates:
+  TargetCommon:
+    contracts:
+    - *AggregationTemplate
+  TargetOracleTemplate:
+    contracts:
+    - *AggregationTemplate
+TargetList:
+- name: eth
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+    address: 0xCorrectSpotterAddress
+- name: bsc
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+    address: 0xCorrectSpotterAddress
+- name: ent
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+    address: 0xCorrectSpotterAddress
+ListeningDataTemplates:
+  USDT:
+    name: ""
+    contractEvents:
+    - "Transfer"
+    handler: "handleUSDTTransferEvent"
+ListeningData:
+- name: "eth USDT"
+  contractEvents:
+  - "Transfer"
+  handler: "handleUSDTTransferEvent"
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "USDT"
+    abi: "../../shared/abi/erc20.abi"
+    address: '0xdac17f958d2ee523a2206206994597c13d831ec7'
+  targetNetwork:
+    rpcURL: wss://mainnet.infura.io/ws/v3/
+    contracts:
+    - name: "AggregationSpotter"
+      abi: "../../shared/abi/AggregationSpotter.abi"
+      address: 0xCorrectSpotterAddress
+- name: "bsc USDT"
+  contractEvents:
+  - "Transfer"
+  handler: "handleUSDTTransferEvent"
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "USDT"
+    abi: "../../shared/abi/erc20.abi"
+    address: '0x55d398326f99059ff775485246999027b3197955'
+  targetNetwork:
+    rpcURL: wss://mainnet.infura.io/ws/v3/
+    contracts:
+    - name: "AggregationSpotter"
+      abi: "../../shared/abi/AggregationSpotter.abi"
+      address: 0xCorrectSpotterAddress

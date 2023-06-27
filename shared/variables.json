@@ -1,0 +1,25 @@
+{
+    "networks": [
+        { "name": "eth", "url": "wss://mainnet.infura.io/ws/v3/" },
+        { "name": "bsc", "url": "wss://mainnet.infura.io/ws/v3/" },
+        { "name": "ent", "url": "wss://mainnet.infura.io/ws/v3/" }
+    ],
+    "deployedContractAddresses": {
+        "eth": {
+            "USDTContract": "0xdac17f958d2ee523a2206206994597c13d831ec7"
+        },
+        "bsc": {
+            "USDTContract": "0x55d398326f99059ff775485246999027b3197955"
+        },
+        "ent": {
+            "USDTContract": ""
+        }
+    },
+    "spotterAddresses": {
+        "Addresses": {
+            "eth": { "aggregationSpotter": "0xCorrectSpotterAddress" },
+            "bsc": { "aggregationSpotter": "0xCorrectSpotterAddress" },
+            "ent": { "aggregationSpotter": "0xCorrectSpotterAddress" }
+        }
+    }
+}

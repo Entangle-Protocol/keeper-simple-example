@@ -1,0 +1,80 @@
+ContractTemplates:
+  AggregationTemplate: &AggregationTemplate
+    name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+
+TargetTemplates:
+  TargetCommon:
+    contracts:
+    - *AggregationTemplate
+
+TargetList:
+- name: eth
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+- name: bsc
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+- name: ent
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+
+ListeningDataTemplates:
+  AggregationSpotter:
+    name: ""
+    contractEvents:
+    - "ProposalApproved"
+    handler: "handleProposalApproved"
+
+ListeningData:
+- name: "eth AggregationSpotter"
+  contractEvents:
+  - "ProposalApproved"
+  handler: "handleProposalApproved"
+
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+
+    address: 0xCorrectSpotterAddress
+  targetNetwork:
+    rpcURL: wss://mainnet.infura.io/ws/v3/
+    contracts:
+    - name: "AggregationSpotter"
+      abi: "../../shared/abi/AggregationSpotter.abi"
+
+      address: 0xCorrectSpotterAddress
+- name: "bsc AggregationSpotter"
+  contractEvents:
+  - "ProposalApproved"
+  handler: "handleProposalApproved"
+
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+
+    address: 0xCorrectSpotterAddress
+  targetNetwork:
+    rpcURL: wss://mainnet.infura.io/ws/v3/
+    contracts:
+    - name: "AggregationSpotter"
+      abi: "../../shared/abi/AggregationSpotter.abi"
+
+      address: 0xCorrectSpotterAddress
+- name: "ent AggregationSpotter"
+  contractEvents:
+  - "ProposalApproved"
+  handler: "handleProposalApproved"
+
+  rpcURL: wss://mainnet.infura.io/ws/v3/
+  contracts:
+  - name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+
+    address: 0xCorrectSpotterAddress
+  targetNetwork:
+    rpcURL: wss://mainnet.infura.io/ws/v3/
+    contracts:
+    - name: "AggregationSpotter"
+      abi: "../../shared/abi/AggregationSpotter.abi"
+
+      address: 0xCorrectSpotterAddress

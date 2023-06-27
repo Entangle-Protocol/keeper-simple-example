@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  keeper:
+    build:
+      dockerfile: Dockerfile.executor
+    command: ["$KEEPER_KEYSTORE_NAME", "$KEYSTORE_PASSWORD"]
+    ports:
+      - "5777:5777"
+    # volumes:
+    #   - ./keystore/:/app/shared/keystore/
+    # environment:

@@ -1,0 +1,26 @@
+
+ContractTemplates:
+  AggregationTemplate: &AggregationTemplate
+    name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+  ETHUsdtTemplate:
+    name: "USDT"
+    abi: "../../shared/abi/erc20.abi"
+TargetTemplates:
+  TargetCommon:
+    contracts:
+      - *AggregationTemplate
+  TargetOracleTemplate:
+    contracts:
+      - *AggregationTemplate
+TargetList:
+  []
+ListeningDataTemplates:
+  USDT:
+    name: ""
+    contractEvents:
+    - "Transfer"
+    handler: "handleUSDTTransferEvent"
+ListeningData:
+  []
+  

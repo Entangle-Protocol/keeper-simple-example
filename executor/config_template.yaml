@@ -1,0 +1,25 @@
+
+ContractTemplates:
+  AggregationTemplate: &AggregationTemplate
+    name: "AggregationSpotter"
+    abi: "../../shared/abi/AggregationSpotter.abi"
+
+TargetTemplates:
+  TargetCommon:
+    contracts:
+      - *AggregationTemplate
+
+TargetList:
+  []
+  
+
+ListeningDataTemplates:
+  AggregationSpotter:
+    name: ""
+    contractEvents:
+    - "ProposalApproved"
+    handler: "handleProposalApproved"
+
+ListeningData:
+  []
+  
